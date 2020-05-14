@@ -1,26 +1,24 @@
 const getWeather = (location) => {
-  fetch('http://localhost:3000/weather?location=' + location).then(
-    (response) => {
-      response.json().then((data) => {
-        //messageOne.textContent = '';
-        console.log(data);
-        if (data.error) {
-          messageOne.textContent = 'Error! ' + data.error;
-        } else {
-          messageOne.textContent = data.adress;
-          messageTwo.textContent =
-            data.description +
-            '. It is currently ' +
-            data.temp +
-            '°, it feels like  ' +
-            data.feelslike +
-            '° with ' +
-            data.humidity +
-            ' % of humidity ';
-        }
-      });
-    }
-  );
+  fetch('/weather?location=' + location).then((response) => {
+    response.json().then((data) => {
+      //messageOne.textContent = '';
+      console.log(data);
+      if (data.error) {
+        messageOne.textContent = 'Error! ' + data.error;
+      } else {
+        messageOne.textContent = data.adress;
+        messageTwo.textContent =
+          data.description +
+          '. It is currently ' +
+          data.temp +
+          '°, it feels like  ' +
+          data.feelslike +
+          '° with ' +
+          data.humidity +
+          ' % of humidity ';
+      }
+    });
+  });
 };
 
 const weatherForm = document.querySelector('form');
